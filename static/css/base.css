@@ -1,0 +1,72 @@
+body{
+    display: block;
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #e0e0e0;
+    margin: 0;
+}
+
+header{
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    height: 10vh;
+}
+
+header div{
+    width: 35%;
+}
+
+div input{
+    width: 60%;
+    padding: 0 0.2rem;
+    text-align: center;
+    margin: 0rem;
+}
+div button{
+    width: 20%;
+    padding: 0 0.2rem;
+    margin: 0rem;
+}
+
+.logo{
+    text-decoration: none;
+    color: whitesmoke;
+}
+ul{
+    display: inline-flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+ul a{
+    color: whitesmoke;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+
+footer{
+    padding: 5px;
+    height: 10%;
+    background-color: black;
+    text-align: left;
+}
+
+footer p{
+    color: whitesmoke;
+    /*align-content: center;*/
+}
+footer a{
+    color: dodgerblue;
+    text-decoration: none;
+    text-align: center;
+}
+
+.not_found{
+    height: 64.5vh;
+    text-align: justify;
+}
