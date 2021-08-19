@@ -1,9 +1,11 @@
-body{
-    display: block;
-    height: 100vh;
+*{
+    box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-    background-color: #e0e0e0;
-    margin: 0;
+    outline: none;
+}
+
+body{
+    max-width: 100%;
 }
 
 header{
@@ -41,11 +43,20 @@ ul{
     justify-content: space-between;
     padding: 10px;
 }
+ul li{
+    text-decoration: none;
+}
 
 ul a{
     color: whitesmoke;
-    text-decoration: none;
+    /* text-decoration: none; */
     margin-right: 20px;
+}
+
+
+main{
+    width: 90%;
+    margin: 5%;
 }
 
 

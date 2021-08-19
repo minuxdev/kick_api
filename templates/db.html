@@ -5,48 +5,55 @@
 <div class="h1">
 	<h1>DATABASE - {{ query|upper() }}</h1>
 </div>
-
-<table class="table">
-	<thead>
-		<tr>
-			<th>Ord.</th>
-			<th>Title</th>
-			<th>Size</th>
-			<th>Seeds</th>
-			<th>Magnet</th>
-			<!-- <th>Category</th> -->
-		</tr>
-	</thead>
-	<tbody>
-		{% for i in range(data|length) %}
-		
-		<tr>
-			<td>{{ i + 1 }}</td>
-			{% for key, value in data[i].items() %}
+<div class="table">
+	<table>
+		<thead>
+			<tr>
+				<th>Ord.</th>
+				<th>Title</th>
+				<th>Size</th>
+				<th>Seeds</th>
+				<th>Magnet</th>
+				<th>Category</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for i in range(data|length) %}
 			
-				{% if key == 'title' %}
-					<td>{{ value }}</td>
-				{% endif %}
-				{% if key == 'size' %}
-					<td>{{ value }}</td>
-				{% endif %}
-				{% if key == 'seeds' %}
-					{% if value >= 400 %}
-						<td class="active">{{ value }}</td>
-					{% elif value >= 100 %}
-						<td class="sleep">{{ value }}</td>
-					{% else %}
-						<td class="dead">{{ value }}</td>
+			<tr>
+				<td>{{ i + 1 }}</td>
+				{% for key, value in data[i].items() %}
+				
+					{% if key == 'title' %}
+						<td>{{ value }}</td>
 					{% endif %}
-				{% endif %}
-				{% if key == 'magnet' %}
-					<td><a href={{ value }}>Magnet Link</a></td>
-				{% endif %}
-			{% endfor %}
-			<!-- <td> {{ category }}</td> -->
-		</tr>
-		{% endfor %}
-	</tbody>
-</table>
+					
+					{% if key == 'size' %}
+						<td>{{ value }}</td>
+					{% endif %}
+					
+					{% if key == 'seeds' %}
+						{% if value >= 400 %}
+							<td class="active">{{ value }}</td>
+						{% elif value >= 100 %}
+							<td class="sleep">{{ value }}</td>
+						{% else %}
+							<td class="dead">{{ value }}</td>
+						{% endif %}
+					{% endif %}
 
+					{% if key == 'magnet' %}
+						<td><a href={{ value }}>Magnet Link</a></td>
+					{% endif %}
+
+					{% if key == 'category' %}
+						<td> {{ value }}</td>
+					{% endif %}
+					
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
 {% endblock %}

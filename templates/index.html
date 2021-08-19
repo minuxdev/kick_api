@@ -4,26 +4,32 @@
 
 <div class="conteiner">
     <div class="form">
-        <!-- <form action="/minuxdb" method="POST">
+        <form action="/minuxdb" method="POST">
             <input type="search" name="search">
             <button type="submit" name="btn">ICON</button>
-        </form> -->
+        </form>
     </div>
     <nav class="category">
-        <div class="movies">
+        <div class="cards">
             <h2>Latest Movies</h2>
             <p>Download the most recent movies</p>
-            <img src="{{url_for('static', filename='images/movies1.jpg')}}" alt="Recent Relieses" width="200" height="200">
+            <a href="/movies">
+            <img src="{{url_for('static', filename='images/movies1.jpg')}}" 
+            alt="Recent Relieses" width="200" height="200"></a>
         </div>
-        <div class="tv_show">
+        <div class="cards">
             <h2>Latest TV Shows</h2>
             <p>Download the most recent episodes of your<br> favorite Tv Show Season</p>
-            <img src="{{url_for('static', filename='images/tv_show1.jpg')}}" alt="Recent Relieses" width="200" height="200">
+            <a href="/show/">
+            <img src="{{url_for('static', filename='images/tv_show1.jpg')}}" 
+            alt="Recent Relieses" width="200" height="200"></a>
         </div>
-        <div class="games">
+        <div class="cards">
             <h2>Latest Games</h2>
             <p>Download the most recent games in the industry</p>
-            <img src="{{url_for('static', filename='images/games1.jpg')}}" alt="Recent Relieses" width="200" height="200">
+            <a href="/games/">
+            <img src="{{url_for('static', filename='images/games1.jpg')}}"
+             alt="Recent Relieses" width="200" height="200"></a>
         </div>
         
         

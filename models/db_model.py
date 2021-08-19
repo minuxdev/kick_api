@@ -19,8 +19,8 @@ db = SQLAlchemy(app)
 class Queries(db.Model):
 	__tablename__ = "queries"
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	query = db.Column(db.String(60), unique=True)
-	add_time = db.Column(db.DateTime)
+	query = db.Column(db.String(60), unique=True, nullable=False)
+	add_time = db.Column(db.DateTime, nullable=False)
 	
 
 	def __repr__(cls):
@@ -30,7 +30,8 @@ class Queries(db.Model):
 class Records(db.Model):
 	__tablename__ = "records"
 	query_id = db.Column(db.Integer, db.ForeignKey('queries.id'), primary_key=True)
-	binary_file = db.Column(db.LargeBinary, nullable=False)
+	byte_file = db.Column(db.LargeBinary, nullable = False)
+	
 
 	def __repr__(cls):
 		return f"'query_id': {cls.id}, 'record': {cls.binary_file}"

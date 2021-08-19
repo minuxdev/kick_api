@@ -25,11 +25,13 @@ class KickAss():
         mag = {"title": "Torrent magnet link"}
         size = {"class": "nobr center"}
         seed = {"class": "green center"}
+        cat = {"id": "cat_12975568"}
 
         self.seeds = list()
         self.size = list()
         self.title = list()
         self.magnet = list()
+        self.category = list()
 
         bs = BeautifulSoup(self.scrap, "lxml")
 
@@ -37,6 +39,7 @@ class KickAss():
         self.magnet = bs.findAll("a", attrs=mag)
         self.size = bs.findAll(attrs=size)
         self.seeds = bs.findAll(attrs=seed)
+        self.category = bs.findAll(attrs=cat)
 
 
     def colect_data(self):
@@ -44,6 +47,7 @@ class KickAss():
         magnet = list()
         size = list() 
         seeds = list()
+        category = list()
         
         for t in self.title:
             title.append(t.text)
@@ -56,8 +60,11 @@ class KickAss():
 
         for se in self.seeds:
             seeds.append(se.text)
+        
+        for cat in self.category:
+            category.append(cat.text)
 
-        return title, magnet, size, seeds
+        return title, magnet, size, seeds, category
 
 
 def data_collector(url):
@@ -66,22 +73,24 @@ def data_collector(url):
     magnet = list()
     size = list() 
     seeds = list()
+    category = list()
         
     for i in range(3):            
         url = f"{url}/{i +1 }/"
 
         k = KickAss(url)
-        t, m, sz, sd = k.colect_data()
+        t, m, sz, sd, cat = k.colect_data()
         
         title.extend(t)
         magnet.extend(m)
         size.extend(sz)
         seeds.extend(sd)
+        category.extend(cat)
     
-    return title, magnet, size, seeds
+    return title, magnet, size, seeds, category
 
 
-def json_maker(title, magnet, size, seeds):
+def json_maker(title, magnet, size, seeds, category):
     jsonfile = []
 
     for i in range(len(title)):
@@ -89,13 +98,14 @@ def json_maker(title, magnet, size, seeds):
                 "title": title[i],
                 "size": size[i],
                 "seeds": int(seeds[i]),
-                "magnet": magnet[i]
+                "magnet": magnet[i],
+                "category": category[i]
         })
 
     return jsonfile
 
 
 def returning_json(url):
-    title, magnet, size, seeds = data_collector(url)
-    jsonfile = json_maker(title, magnet, size, seeds)
+    title, magnet, size, seeds, category = data_collector(url)
+    jsonfile = json_maker(title, magnet, size, seeds, category)
     return jsonfile

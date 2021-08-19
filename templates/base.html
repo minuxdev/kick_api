@@ -9,14 +9,15 @@
 			rel="	stylesheet"> 
 	<link rel="stylesheet" href="{{url_for('static', filename='css/base.css')}}">
 	<link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/db.css')}}">
 
 </head>
 <body>
 	<header>
 		<a class="logo" href="#">Minux-Dev</a>
 		<div class="search">
-			<form action="/base" method="post">
-				<input type="search" name="srch" placeholder="Search Here!"
+			<form action="/home" method="post">
+				<input type="search" name="user_input" placeholder="Search Here!"
 				autocomplete="true" spellcheck="true">
 				<button type="submit" name="go">GO</button>
 			</form>
