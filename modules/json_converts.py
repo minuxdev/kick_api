@@ -10,6 +10,6 @@ def encoding(json_file):
 
 
 def decoding(encoded_file):
-    decoded_file = encoded_file.decode('utf-32')
+    decoded_file = str(encoded_file, 'utf-32')
 
     return decoded_file
