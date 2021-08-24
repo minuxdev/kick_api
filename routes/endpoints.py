@@ -37,7 +37,9 @@ def index():
 # @app.route("/db", methods = ['POST', 'GET'])
 @app.route("/<keyword>", methods=['POST', 'GET'])
 def search(keyword):
-	
+
+	action = DBActions()
+
 	data = [db_object.get() 
 			for db_object 
 			in db.session.query(Records).filter_by(query = keyword)]
@@ -47,30 +49,12 @@ def search(keyword):
 		url = f"https://kat.sx/usearch/{keyword}"
 		records = returning_json(url)
 
-		action = DBActions(records)
-		check = action.commit(keyword)
-		
+		check = action.commit(keyword, records)
 		if not check:
 			return render_template("not_found.html")
+	else:
+		records = action.retrieving(data)	
 		
-	else:		
-		
-		items = list()
-		for i in range(len(data)):
-		
-			items.append(data[i]['db_file'].decode('utf-32')[1:-1])
-		
-		object = json.loads(json.dumps(items))[0].strip().split("},")
-
-		records = list()
-		for i in range(len(object)):
-			if i + 1 == len(object):
-				ob = object[i]
-			else:
-				ob = object[i] + "}"
-
-			records.append(json.loads(ob))
-
 	return render_template("db.html", _title = "keyword", data = records, query = keyword)
 
 

@@ -3,12 +3,17 @@ from flask import render_template
 from app import app
 from time import strftime
 from modules.json_converts import encoding
+import json
 
 import pymysql
 import psycopg2
 
 
 pymysql.install_as_MySQLdb()
+
+
+# https://git.heroku.com/minuxapi.git
+
 MYSQL_URI = 'mysql://minux: @localhost/api_db'
 # PGSQL_URI = "postgresql://qzedlvfjvoimbs:488b23ab02f988a6bea5e86468bcaaef310d2496\
 # 23ca100f917f3ad46752c68c@ec2-52-72-125-94.compute-1.amazonaws.com:\
@@ -38,16 +43,13 @@ class Records(db.Model):
 
 
 class DBActions():
-	
-	def __init__(self, records):
-		self.records = records
-		
 
-	def commit(self, keyword):
+	@classmethod
+	def commit(cls, keyword, records):
 		date_time = strftime('%Y-%m-%d %H:%M:%S')
 
-		if len(self.records) != 0:
-			encoded_file = encoding(self.records)
+		if len(records) != 0:
+			encoded_file = encoding(records)
 
 			try:
 				query = Records(query=keyword, add_time = date_time, 
@@ -67,3 +69,23 @@ class DBActions():
 			check = False
 			return check
 
+	@classmethod
+	def retrieving(cls, data):
+		
+		items = list()
+		for i in range(len(data)):
+		
+			items.append(data[i]['db_file'].decode('utf-32')[1:-1])
+		
+		object = json.loads(json.dumps(items))[0].strip().split("},")
+
+		records = list()
+		for i in range(len(object)):
+			if i + 1 == len(object):
+				ob = object[i]
+			else:
+				ob = object[i] + "}"
+
+			records.append(json.loads(ob))
+		
+		return records
