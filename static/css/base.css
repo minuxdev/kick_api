@@ -63,22 +63,21 @@ main{
 
 footer{
     padding: 5px;
-    height: 10%;
+    height: 20%;
     background-color: black;
-    text-align: left;
+    text-align: center;
 }
 
 footer p{
     color: whitesmoke;
+    text-align: center;
     /*align-content: center;*/
 }
 footer a{
     color: dodgerblue;
     text-decoration: none;
-    text-align: center;
 }
 
-.not_found{
-    height: 64.5vh;
-    text-align: justify;
+footer hr{
+    color: white;
 }

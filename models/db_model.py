@@ -4,23 +4,19 @@ from app import app
 from time import strftime
 from modules.json_converts import encoding
 import json
-
 import pymysql
 import psycopg2
 
 
 pymysql.install_as_MySQLdb()
 
-
-# https://git.heroku.com/minuxapi.git
-
 MYSQL_URI = 'mysql://minux: @localhost/api_db'
-# PGSQL_URI = "postgresql://qzedlvfjvoimbs:488b23ab02f988a6bea5e86468bcaaef310d2496\
-# 23ca100f917f3ad46752c68c@ec2-52-72-125-94.compute-1.amazonaws.com:\
-# 5432/d3ep75ssohpk8d"
 
+PGSQL_URI = "postgresql://avycfqvhbyzvsc:0c0057240a51ced70f3f9163307b97baa967fdf283f26\
+774586c0c8913c7a969@ec2-44-196-170-156.compute-1.amazonaws.com:\
+5432/d33s43dhj5grk9"
 
-app.config['SQLALCHEMY_DATABASE_URI'] = MYSQL_URI
+app.config['SQLALCHEMY_DATABASE_URI'] = PGSQL_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
