@@ -1,5 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask import render_template
 from app import app
+from time import strftime
+from modules.json_converts import encoding
+
 import pymysql
 import psycopg2
 
@@ -31,3 +35,35 @@ class Records(db.Model):
 			"add_time": cls.add_time, 
 			"db_file": cls.byte_file
 			}
+
+
+class DBActions():
+	
+	def __init__(self, records):
+		self.records = records
+		
+
+	def commit(self, keyword):
+		date_time = strftime('%Y-%m-%d %H:%M:%S')
+
+		if len(self.records) != 0:
+			encoded_file = encoding(self.records)
+
+			try:
+				query = Records(query=keyword, add_time = date_time, 
+				byte_file=encoded_file)
+				
+				db.session.add(query)
+				db.session.commit()
+				print("Object stored sucessfully")
+
+			except Exception as e:
+				print(f"Error occured during the operation!\nError: {e}")
+			
+			check = True
+			return check
+		
+		else:
+			check = False
+			return check
+

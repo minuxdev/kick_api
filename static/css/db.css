@@ -50,3 +50,6 @@ td a:hover{
 .dead{
 	color: red;
 }
+.none{
+	display: none;
+}

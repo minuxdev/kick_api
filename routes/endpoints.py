@@ -1,14 +1,13 @@
 import json
-from time import strftime
+
 from app import app
 from modules.json_converts import encoding, decoding
 from modules.scraping import returning_json
-from models.db_model import Records, db
+from models.db_model import Records, db, DBActions
 from flask import Flask, request, render_template, \
 					url_for, redirect, request
 
 
-date_time = strftime('%Y-%m-%d %H:%M:%S')
 
 def redirections():
 	post = False
@@ -47,23 +46,13 @@ def search(keyword):
 		
 		url = f"https://kat.sx/usearch/{keyword}"
 		records = returning_json(url)
-		if len(records) != 0:
-			encoded_file = encoding(records)
 
-			try:
-				query = Records(query=keyword, add_time = date_time, 
-				byte_file=encoded_file)
-				
-				db.session.add(query)
-				db.session.commit()
-				print("Object stored sucessfully")
-
-			except Exception as e:
-				print(f"Error occured during the operation!\nError: {e}")
-
-		else:
+		action = DBActions(records)
+		check = action.commit(keyword)
+		
+		if not check:
 			return render_template("not_found.html")
-
+		
 	else:		
 		
 		items = list()
