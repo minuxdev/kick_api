@@ -10,31 +10,41 @@ from flask import Flask, request, render_template, \
 
 date_time = strftime('%Y-%m-%d %H:%M:%S')
 
+def redirections():
+	post = False
+	if request.method == 'POST':
+		keyword = request.form['user_input']
+		post = True
+	
+		return post, keyword
+	else:
+		keyword = None
+		return post, keyword
+
+
 # Base Route
 @app.route("/", methods=['POST', 'GET'])
 @app.route("/home", methods=['POST', 'GET'])
 def index():
-	if request.method == 'POST':
-		keyword = request.form['user_input']
-		return redirect(url_for('search', keyword = keyword))
+	post, keyword = redirections()
+
+	if post:
+		return redirect(url_for('search', keyword = keyword,
+			_title = keyword))
 		
-	return render_template("index.html")
+	return render_template("index.html", _title = "Minux API")
 
 
+# @app.route("/db", methods = ['POST', 'GET'])
 @app.route("/<keyword>", methods=['POST', 'GET'])
 def search(keyword):
-
-	if request.method == "POST":
-		keyword = request.form['user_input']
-		print(keyword)
 	
-	# data = db.session.query(Queries).filter_by(query = keyword)
 	data = [db_object.get() 
 			for db_object 
 			in db.session.query(Records).filter_by(query = keyword)]
 	
 	if not data:
-		print("Not found")
+		
 		url = f"https://kat.sx/usearch/{keyword}"
 		records = returning_json(url)
 		if len(records) != 0:
@@ -55,8 +65,7 @@ def search(keyword):
 			return render_template("not_found.html")
 
 	else:		
-		print("File Exist in Database")
-
+		
 		items = list()
 		for i in range(len(data)):
 		
@@ -76,8 +85,46 @@ def search(keyword):
 	return render_template("db.html", _title = "keyword", data = records, query = keyword)
 
 
-@app.route("/movies/")
-@app.route("/show/")
-@app.route("/games/")
+@app.route("/show/", methods=['POST', 'GET'])
+def tv_show():
+	post, keyword = redirections()
+
+	if post:
+		return redirect(url_for('search', keyword = keyword, 
+				_title = keyword))
+
+	url = f"https://kat.sx/tv"
+	jsonfile = returning_json(url)
+
+	return render_template("db.html", data = jsonfile, 
+			_title = "TV Show")
+
+
+@app.route("/movies", methods = ['POST', 'GET'])	
 def movies():
-	return render_template("db.html")
+	post, keyword = redirections()
+	
+	if post:
+		return redirect(url_for('search', keyword = keyword,
+			_title = keyword))
+
+	url = f"https://kat.sx/movies"
+	jsonfile = returning_json(url)
+
+	return render_template("db.html", data = jsonfile, 
+			_title = "Movies", keyword = keyword)
+
+
+@app.route("/games/")	
+def games():
+
+	post, keyword = redirections()
+	
+	if post:
+		return redirect(url_for('search', keyword = keyword))
+
+	url = f"https://kat.sx/games"
+	jsonfile = returning_json(url)
+
+	return render_template("db.html", data = jsonfile, 
+		_title = "Games")
