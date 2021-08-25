@@ -44,18 +44,24 @@ thead th:nth-child(1){
 }
 
 thead th:nth-child(2){
-	width: 50%;
+	width: 44%;
 }
 
-thead th:nth-child(1){
-	width: 20%;
+thead th:nth-child(3){
+	width: 14%;
 }
 
-thead th:nth-child(1){
-	width: 20%;
+thead th:nth-child(4){
+	width: 12%;
 }
 
+thead th:nth-child(5){
+	width: 15%;
+}
 
+thead th:nth-child(6){
+	width: 15%;
+}
 
 .active{
 	color: green;

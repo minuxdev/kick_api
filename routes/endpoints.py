@@ -41,7 +41,8 @@ def search(keyword):
 	else:
 		records = action.retrieving(data)	
 		
-	return render_template("db.html", _title = "keyword", data = records, query = keyword)
+	return render_template("db.html", _title = "keyword", data = records, 
+							query = keyword)
 
 
 @app.route("/show/", methods=['POST', 'GET'])
@@ -56,7 +57,7 @@ def tv_show():
 	jsonfile = returning_json(url)
 
 	return render_template("db.html", data = jsonfile, 
-			_title = "TV Show")
+			_title = "TV Show", page = "Latest TV SHOW")
 
 
 @app.route("/movies", methods = ['POST', 'GET'])	
@@ -71,7 +72,7 @@ def movies():
 	jsonfile = returning_json(url)
 
 	return render_template("db.html", data = jsonfile, 
-			_title = "Movies", keyword = keyword)
+			_title = "Movies", keyword = keyword, page = "Latest Movies")
 
 
 @app.route("/games/")	
@@ -85,4 +86,4 @@ def games():
 	jsonfile = returning_json(url)
 
 	return render_template("db.html", data = jsonfile, 
-		_title = "Games")
+		_title = "Games", page = "Latest Games")

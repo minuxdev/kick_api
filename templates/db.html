@@ -3,7 +3,11 @@
 {% block content %}
 
 <div class="h1">
-	<h1>DATABASE {% if query %}{{ query|upper() }}{% endif %}</h1>
+	<h1>{% if query %}
+		Records for - {{ query|upper() }}
+		{% else %}
+		{{ page }}
+		{% endif %}</h1>
 </div>
 <div class="table">
 	<table>

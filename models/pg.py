@@ -15,6 +15,8 @@ cursor = db.cursor()
 
 statement = "DROP TABLE queries;"
 
+# DELETE FROM records;
+
 cursor.execute(statement)
 db.commit()
 
