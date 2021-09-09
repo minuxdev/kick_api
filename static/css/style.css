@@ -1,0 +1,362 @@
+
+/* RESETTING */
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    font-family: 'Montserrat', sans-serif;
+    outline: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    border: none;
+    resize: none;
+}
+
+body{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main{
+    flex: 1 0 auto;
+    background-image: url(../images/aKid.jpg);
+    background-position: fixed;
+    background-size: auto 100%;
+}
+
+header, main, footer, img, input, textarea{
+    width: 100%;
+}
+
+img{
+    height: 100%;
+}
+
+header, footer{
+    position: relative;
+    background-color: #061836;
+    text-align: center;
+    padding: 0.5em 2em;
+    min-height: 15vh;
+}
+
+input, textarea{
+    padding: 0.2em 0.5em;
+    font-size: 1em;
+    text-align: justify;
+}
+
+/*  GROUPING BY DISPLAY TYPE */
+header, .cards{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/*  GROUPING BY FONT-SIZE */
+h2{
+    font-size: 1.5em; 
+    color: whitesmoke; 
+    padding: 0.3em; 
+    margin: 0.1em auto;
+}
+
+p{
+    font-size: 1em; 
+    color: whitesmoke; 
+    margin: 0.5em auto;
+    word-wrap: break-word;
+    text-align: justify;
+}
+
+/*  PARENT PAGE */
+#logo{
+    width: 200px;
+    height: 180px;
+}
+
+.form, #menu-form{
+    display: none;
+    justify-content: center;
+    width: 25%;
+    background-color: whitesmoke;
+    border-radius: 0.3em;
+    padding: 0.1em;
+}
+
+.form input{
+    width: 85%;
+}
+
+.form button{
+    padding: 0.2em 0.4em;
+    font-size: 1em;
+    width: 15%;
+}
+
+/*  conteiner div */
+.conteiner{
+    display: flex;
+}
+.main-content{
+    padding: 4em 1em;
+    width: 80%;
+    margin: auto;
+}
+
+
+/*  TOGGLE */
+.toggle{
+    position: absolute;
+    right: 2em;
+    top: 1em;
+    height: 40px;
+    width: 40px;
+    background-color: #BF3073;
+    cursor: pointer;
+    
+}
+
+.toggle:before{
+    /* content: "\f142"; */
+    position: absolute;
+    content: "\f0c9";
+    width: 100%;
+    height: 100%;
+    font-family: "Font Awesome 5 Free";
+    line-height: 45px;
+    font-size: 25px;
+    text-align: center;
+    color: white;
+}
+.toggle:hover{
+    /* background-color: tomato; */
+    border-radius: 0.3em;
+}
+
+#side-menu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: #08090a;
+    color: white;
+    transition: 1s;
+    overflow: hidden;
+    text-align: justify;
+}
+
+#side-menu ul{
+    margin-top: 4em;
+}
+
+#side-menu h2{
+    text-align: center;
+    color: white;
+    white-space: nowrap;
+}
+
+#side-menu li{
+    margin: 0.1em 0.6em;
+    padding: 0.3em 1em;
+    border-radius: 0.3em;
+}
+#side-menu li:hover{
+    background-color: teal;
+}
+
+#side-menu a{
+    color: white;
+    display: inline-flex;
+    white-space: nowrap;
+}
+
+#icon, #title{
+    line-height: 1em;
+    font-size: 1em;
+    margin: auto 1em;
+}
+
+#title{
+    margin: auto;
+}
+
+#menu-form{
+    width: 70%;
+    display: inline-flex;
+    margin: auto 1em;
+    font-size: 1em;
+}
+
+#menu-form button{
+    padding: 0.3em 0.5em;
+}
+
+
+
+/* aside section */
+aside{
+    display: none;
+}
+
+/*  INDEX PAGE */
+.cards{
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 95%;
+    margin: auto;
+}
+
+.card{
+    width:300px;
+    height: 350px;
+    padding: 0.5em;
+    margin: 1em;
+    box-shadow: 1px 1px 4px rgba(9, 1, 24, 0.5);
+}
+
+.card-image{
+    margin-top: 1.5em;
+    height: 70%;
+    width: 100%;
+}
+
+.h1{
+    color: whitesmoke;
+    text-align: center;
+    font-size: 1.5em;
+    padding: 0.5em;
+    margin: 0.5em auto;
+}
+
+
+@media screen and (min-width: 720px){
+    .form{
+        display: inline-flex;
+    }
+
+    .cards{
+        width: 80%;
+    }
+
+    aside{
+        display: block;
+        /* width: 350px; */
+        padding: 5em 1em;
+        text-align: center;
+        background-color: rgba(6, 3, 41, 0.4);
+    }
+
+    aside button{
+        width: 50%;
+        text-align: center;
+        padding: 0.5em;
+        margin: 0.5em auto;
+        border-radius: 0.3em;
+    }
+
+    .identifier{
+        text-align: left;
+    }
+}
+
+
+/*  DB_CSS */
+.table table{
+	border-collapse: collapse;
+	box-shadow: 0px 15px 35px 1px #010116;
+	text-align: left;
+	table-layout: fixed;
+	width: 100%;
+    color: whitesmoke;
+}
+
+.table table thead{
+	box-shadow: 0px 3px 3px #010007;
+	padding: 1ren;
+}
+
+th{
+	letter-spacing: 0.4rem;
+	padding: 0.4rem 1.2rem;
+	text-align: center;
+}
+
+tr{
+	padding: 0.4rem 1.2rem;
+	box-shadow: 0px 4px 4px #181717;
+	text-align: left;
+}
+
+td, th{
+	border-right: 2px solid #1d1c1c;
+	padding: 0.5rem;
+	word-wrap: break-word;
+}
+
+td a{
+	color: #107cbe;
+	text-decoration: none;
+}
+
+td a:hover{
+	color: indianred;
+	font-size: 1rem;
+}
+
+thead th:nth-child(1){
+	width: 6%;
+}
+
+thead th:nth-child(2){
+	width: 45%;
+}
+
+thead th:nth-child(3){
+	width: 14%;
+}
+
+thead th:nth-child(4){
+	width: 12%;
+}
+
+thead th:nth-child(5){
+	width: 15%;
+}
+
+thead th:nth-child(6){
+	width: 18%;
+}
+
+.active{
+	color: green;
+}
+
+.sleep{
+	color: orange;
+}
+
+.dead{
+	color: red;
+}
+.none{
+	display: none;
+}
+
+
+
+
+footer p{
+    text-align: center; 
+    color: white;
+}
+footer a{
+    color: dodgerblue;
+}
+#h-foot, #h-card{
+    border: 1px solid rgba(61, 70, 73, 0.3);
+    margin-top: 0.5em;
+}

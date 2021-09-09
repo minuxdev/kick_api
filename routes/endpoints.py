@@ -1,9 +1,10 @@
 import json
+from time import strftime
 from app import app
 from modules.json_converts import encoding, decoding
 from modules.scraping import returning_json
 from modules.redirections import redirections
-from models.db_model import Records, db, DBActions
+from models.db_model import Records, Users, db, DBActions
 from flask import Flask, request, render_template, \
 					url_for, redirect, request
 
@@ -45,7 +46,7 @@ def search(keyword):
 							query = keyword)
 
 
-@app.route("/show/", methods=['POST', 'GET'])
+@app.route("/show", methods=['POST', 'GET'])
 def tv_show():
 	post, keyword = redirections()
 
@@ -75,7 +76,7 @@ def movies():
 			_title = "Movies", keyword = keyword, page = "Latest Movies")
 
 
-@app.route("/games/")	
+@app.route("/games")	
 def games():
 	post, keyword = redirections()
 	
@@ -87,3 +88,32 @@ def games():
 
 	return render_template("db.html", data = jsonfile, 
 		_title = "Games", page = "Latest Games")
+
+
+@app.route("/contact", methods=['GET','POST'])
+def contact():
+	add_time = strftime('%Y-%m-%d %H:%M:%S')
+	if request.method == "POST":
+		user = request.form['username']
+		email = request.form['email']
+		message = request.form['message']
+
+		try:
+			db_object = Users(user_name=user, email=email,
+								message=message, add_time=add_time)	
+
+			db.session.add(db_object)
+			db.session.commit()
+
+			feedbak = f"""<h1>REPORT</h><br><p>Thanks for contacting us, 
+						we will replay as soon as possible.</p>"""
+			return feedbak
+			
+		except Exception as e:
+			return f"<h1>REPORT</h><br><p>Error occured: {e}</p>"
+
+	else:
+		db_object = Users().query.all()
+		feedbak = f"""<h1>Users Report</h1>
+					<p>{db_object}</p>"""
+	return feedbak

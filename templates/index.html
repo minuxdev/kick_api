@@ -2,44 +2,41 @@
 {% block title %}{{title}}{% endblock %}
 {% block content %}
 
-<div class="conteiner">
-    <div class="form">
-        <form action="/minuxdb" method="POST">
-            <input type="search" name="search">
-            <button type="submit" name="btn">ICON</button>
-        </form>
+<div class="cards">
+    <div class="card">
+        <h2>Movies</h2>
+        <hr id="h-card">
+        <p>Dive in to get the latest movies in the industry.</p>
+        <figure class="card-image">
+            <a href="/movies">
+                <img src="{{url_for('static', filename='images/movie.jpeg')}}" alt="Movie image">
+            </a>
+        </figure>
     </div>
-    <nav class="category">
-        <div class="cards">
-            <h2>Latest Movies</h2>
-            <p>Download the most recent movies</p>
-            <div class="img">
-                <a href="/movies">
-                <img class="img" src="{{url_for('static', filename='images/movies1.jpg')}}" 
-                alt="Recent Relieses"></a>
-            </div>
-        </div>
-        <div class="cards">
-            <h2>Latest TV Shows</h2>
-            <p>Download the most recent episodes of your<br> favorite Tv Show Season</p>
-            <div class="img">
-                <a href="/show/">
-                <img class="img"  src="{{url_for('static', filename='images/tv_show1.jpg')}}" 
-                alt="Recent Relieses"></a>
-            </div>
-        </div>
-        <div class="cards">
-            <h2>Latest Games</h2>
-            <p>Download the most recent games in the industry</p>
-            <div class="img">
-                <a href="/games/">
-                <img src="{{url_for('static', filename='images/games1.jpg')}}"
-                alt="Recent Relieses"></a>
-            </div>
-        </div>
-        
-        
-    </nav>
+    
+    <div class="card">
+        <h2>TV Show</h2>
+        <hr id="h-card">
+        <p>Download the most recent releases of your favourite TV Shows episodes.</p>
+        <figure class="card-image">
+            <a href="/tv_show">
+                <img src="{{url_for('static', filename='images/serie.jpg')}}" alt="TV Show image">
+            </a>
+        </figure>
+    </div>
+    
+    <div class="card">
+        <h2>Games</h2>
+        <hr id="h-card">
+        <p>Here is where the gamers show their smiles.</p>
+        <figure class="card-image">
+            <a href="/games">
+                <img src="{{url_for('static', filename='images/gaming.jpg')}}" alt="Game Image">
+            </a>
+        </figure>
+    </div>
 </div>
+    
+    
 
 {% endblock %}

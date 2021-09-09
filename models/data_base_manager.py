@@ -13,7 +13,11 @@ cursor = db.cursor()
 #     add_time TIMESTAMP NOT NULL,\
 #     byte_file BYTEA NOT NULL);"
 
-statement = "DROP TABLE queries;"
+statement = "CREATE TABLE users(id BIGSERIAL PRIMARY KEY, \
+            user_name VARCHAR(50) NOT NULL, email VARCHAR(60) NOT NULL,\
+            message TEXT NOT NULL UNIQUE, add_time TIMESTAMP NOT NULL);"
+
+# statement = "DROP TABLE users;"
 
 # DELETE FROM records;
 

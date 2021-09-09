@@ -38,6 +38,19 @@ class Records(db.Model):
 			}
 
 
+class Users(db.Model):
+	__tabname__ = "users"
+	id = db.Column(db.Integer, primary_key=True)
+	user_name = db.Column(db.String(50), nullable=False)
+	email = db.Column(db.String(60), nullable=False)
+	message = db.Column(db.Text, nullable=False)
+	add_time = db.Column(db.DateTime, nullable=False)
+
+	
+	def __repr__(cls):
+		return f"Username: {cls.user_name}, Message: {cls.message}, Post Date:{cls.add_time}"
+
+
 class DBActions():
 
 	@classmethod
