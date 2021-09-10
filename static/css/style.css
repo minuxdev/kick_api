@@ -34,11 +34,15 @@ img{
     height: 100%;
 }
 
+button{
+    cursor: pointer;
+}
+
 header, footer{
     position: relative;
-    background-color: #061836;
+    background-color: #01010a;
     text-align: center;
-    padding: 0.5em 2em;
+    padding: 0.5em 1.4em;
     min-height: 15vh;
 }
 
@@ -57,10 +61,10 @@ header, .cards{
 
 /*  GROUPING BY FONT-SIZE */
 h2{
-    font-size: 1.5em; 
+    font-size: 1.4em; 
     color: whitesmoke; 
     padding: 0.3em; 
-    margin: 0.1em auto;
+    margin: 0.1em;
 }
 
 p{
@@ -72,28 +76,17 @@ p{
 }
 
 /*  PARENT PAGE */
+
 #logo{
-    width: 200px;
-    height: 180px;
+    color: whitesmoke;
+    font-size: 1.5em;
+    font-style: bold;
 }
 
 .form, #menu-form{
     display: none;
     justify-content: center;
     width: 25%;
-    background-color: whitesmoke;
-    border-radius: 0.3em;
-    padding: 0.1em;
-}
-
-.form input{
-    width: 85%;
-}
-
-.form button{
-    padding: 0.2em 0.4em;
-    font-size: 1em;
-    width: 15%;
 }
 
 /*  conteiner div */
@@ -101,52 +94,37 @@ p{
     display: flex;
 }
 .main-content{
-    padding: 4em 1em;
-    width: 80%;
+    padding: 1em 1.4em;
+    width: 100%;
     margin: auto;
 }
 
 
 /*  TOGGLE */
 .toggle{
-    position: absolute;
-    right: 2em;
-    top: 1em;
-    height: 40px;
-    width: 40px;
-    background-color: #BF3073;
-    cursor: pointer;
-    
-}
-
-.toggle:before{
-    /* content: "\f142"; */
-    position: absolute;
-    content: "\f0c9";
-    width: 100%;
-    height: 100%;
-    font-family: "Font Awesome 5 Free";
-    line-height: 45px;
-    font-size: 25px;
+    height: 50px;
+    width: 50px;
+    color: #fff;
+    font-size: 2em;
+    /* padding: 0; */
     text-align: center;
-    color: white;
-}
-.toggle:hover{
-    /* background-color: tomato; */
-    border-radius: 0.3em;
+    background-color: rgba(255, 99, 71, 0);
 }
 
+
+/*  SIDE MENU   */
 #side-menu{
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 0;
-    background-color: #08090a;
+    background-color: #01010a;
     color: white;
     transition: 1s;
     overflow: hidden;
     text-align: justify;
+    z-index: 1;
 }
 
 #side-menu ul{
@@ -160,11 +138,12 @@ p{
 }
 
 #side-menu li{
-    margin: 0.1em 0.6em;
-    padding: 0.3em 1em;
+    margin: 0.4em 0.3em;
+    padding: 0.3em 0.5em;
     border-radius: 0.3em;
 }
 #side-menu li:hover{
+    transition: 0.6s;
     background-color: teal;
 }
 
@@ -185,14 +164,19 @@ p{
 }
 
 #menu-form{
-    width: 70%;
+    width: 180px;
     display: inline-flex;
     margin: auto 1em;
     font-size: 1em;
 }
-
+#menu-form input{
+    border-radius: 0.3em 0 0 0.3em;
+}
 #menu-form button{
     padding: 0.3em 0.5em;
+    border-radius: 0 0.3em 0.3em 0;
+    color: #01010a;
+    background-color: whitesmoke;
 }
 
 
@@ -206,21 +190,34 @@ aside{
 .cards{
     flex-wrap: wrap;
     justify-content: space-around;
-    width: 95%;
+    width: 100%;
     margin: auto;
 }
 
 .card{
-    width:300px;
+    width:350px;
+    text-align: center;
     height: 350px;
     padding: 0.5em;
     margin: 1em;
-    box-shadow: 1px 1px 4px rgba(9, 1, 24, 0.5);
+    box-shadow: 1px 1px 4px rgba(15, 9, 65, 0.5);
+    border: 1px solid rgba(75, 71, 71, 0.4);
+    background: rgba(2, 0, 8, 0.7);
 }
 
+.card:hover > h2{
+    background-color: teal;
+    transition: 1s;
+}
+
+.text{
+    margin-top: 0.5em;
+    height: 15%;
+    overflow: hidden;
+}
 .card-image{
-    margin-top: 1.5em;
-    height: 70%;
+    margin-top: 1em;
+    height: 60%;
     width: 100%;
 }
 
@@ -232,42 +229,115 @@ aside{
     margin: 0.5em auto;
 }
 
+#contact{
+    display: none;
+    transition: 1s;
+    text-align: center;
+    background-color: rgba(6, 3, 41, 0.4);
+}
 
-@media screen and (min-width: 720px){
+#contact input, #contact textarea{
+    margin: 0.5em auto;
+    border-radius: 0.3em;
+}
+
+#contact button{
+    width: 40px;
+    text-align: center;
+    padding: 0.3em;
+    margin: 0.3em auto;
+    border-radius: 0.3em;
+}
+
+.header-menu{
+    display: none;
+}
+
+@media screen and (min-width: 780px){
+    .header-menu{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background-color: rgb(2, 15, 22);
+        padding: 0.6em 1em;
+    }
+    .header-menu a{
+        color: whitesmoke;
+    }
+
+    .header-menu li{
+        padding: 0.2em 1em;
+    }
+
+    .header-menu li:hover{
+        transition: 0.6s;
+        background-color: teal;
+        border-radius: 0.3em;
+    }
+    .main-content{
+        width: 80%;
+        padding: 2em 1em;
+    }
     .form{
         display: inline-flex;
     }
+    .form input{
+        width: 85%;
+        border-radius: 0.3em 0 0 0.3em;
+    }
+    
+    .form button{
+        padding: 0.2em 0.4em;
+        font-size: 1em;
+        width: 15%;
+        border-radius: 0 0.3em 0.3em 0;
+        color: #01010a;
+        background-color: whitesmoke;
+    }
 
-    .cards{
-        width: 80%;
+    .card{
+        width: 300px;
+        height: 350px;
     }
 
     aside{
         display: block;
-        /* width: 350px; */
-        padding: 5em 1em;
+        padding: 3em 1em;
         text-align: center;
-        background-color: rgba(6, 3, 41, 0.4);
+        background-color: #01010aa2;
+    }
+
+    aside input, aside textarea{
+        border-radius: 0.3em;;
+    }
+
+    aside h2{
+        margin-bottom: 1em;
     }
 
     aside button{
         width: 50%;
         text-align: center;
         padding: 0.5em;
-        margin: 0.5em auto;
+        margin: 1em auto;
         border-radius: 0.3em;
     }
 
     .identifier{
         text-align: left;
+        margin-top: 1em;
     }
 }
 
 
 /*  DB_CSS */
+/* .table{
+    min-width: 400px;
+    overflow: auto;
+} */
 .table table{
 	border-collapse: collapse;
-	box-shadow: 0px 15px 35px 1px #010116;
+	box-shadow: 0px 15px 35px 1px #38383b7c;
 	text-align: left;
 	table-layout: fixed;
 	width: 100%;
@@ -281,13 +351,13 @@ aside{
 
 th{
 	letter-spacing: 0.4rem;
-	padding: 0.4rem 1.2rem;
+	padding: 0.4rem 1rem;
 	text-align: center;
 }
 
 tr{
-	padding: 0.4rem 1.2rem;
-	box-shadow: 0px 4px 4px #181717;
+	padding: 0.2rem 1rem;
+	box-shadow: 0px 4px 4px #2c2c2cbd;
 	text-align: left;
 }
 
@@ -359,4 +429,9 @@ footer a{
 #h-foot, #h-card{
     border: 1px solid rgba(61, 70, 73, 0.3);
     margin-top: 0.5em;
+}
+
+.copyright{
+    display: inline-flex;
+    font-size: 0.8em;
 }

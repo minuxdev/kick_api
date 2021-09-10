@@ -46,7 +46,7 @@ def search(keyword):
 							query = keyword)
 
 
-@app.route("/show", methods=['POST', 'GET'])
+@app.route("/tv_show", methods=['POST', 'GET'])
 def tv_show():
 	post, keyword = redirections()
 

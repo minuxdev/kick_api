@@ -19,19 +19,47 @@
 
     <body>
         <header>
-            <figure id="logo">
-                <a href="#"><img src="{{url_for('static', filename='images/logo1.png')}}" alt=""></a>
-            </figure>
+            <!-- <figure id="logo">
+                <a href="/home"><img src="{{url_for('static', filename='images/logo1.png')}}" alt=""></a>
+            </figure> -->
+            <a href="/home" id="logo">T-FINDER</a>
             <form class="form" action="#" method="POST">
                 <input type="text" name="user_input">
                 <button><i class="fas fa-search"></i></button>
             </form>
+            <button class="toggle" onclick="open_side_menu(this)">&#9776;</button>
         </header>
 
-        <div class="toggle" onclick="open_sideMenu()"></div>
+        <ul class="header-menu">
+            <li>
+                <a href="#">
+                    <span id="icon"><i class="fas fa-home"></i></span>
+                    <span id="title">HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span id="icon"><i class="fas fa-sign-in-alt"></i></span>
+                    <span id="title">LOG-IN</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="#">
+                    <span id="icon"><i class="fas fa-sign-out-alt"></i></span>
+                    <span id="title">LOG-OUT</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span id="icon"><i class="fas fa-user-plus"></i></span>
+                    <span id="title">CREATE ACCOUNT</span>
+                </a>
+            </li>
+        </ul>
 
         <section id="side-menu">
-
             <ul>
                 <h2>MENU</h2>
                 <hr id="h-foot">
@@ -57,14 +85,26 @@
                     </a>
                 </li>
 
-                <li>
+                <li onclick="open_contact_section()">
                     <a href="#">
                         <span id="icon"><i class="far fa-question-circle"></i></span>
-                        <span id="title">WHAT IS THIS</span>
+                        <span id="title">CONTACT US</span>
                     </a>
                 </li>
+                
+                <li id="contact">
+                    <form action="/contact" method="POST">
+                        <input type="text" name="username" placeholder="minux-team" required>
+                        <input type="email" name="email" placeholder="e.g: minux@team.com" required>
+                        <textarea name="message" cols="20" rows="5"
+                        placeholder="Let us know about your experience being here..." required></textarea>
+                        <br>
+                        <button><i class="fas fa-sign-out-alt"></i></button>
+                    </form>
+                </li>
+
                 <li>
-                    <form action="#" id="menu-form" method="POST">
+                    <form action="/home" id="menu-form" method="POST">
                         <input type="text" name="user_input">
                         <button><i class="fas fa-search"></i></button>
                     </form>
@@ -103,6 +143,9 @@
         <footer>
             <p>Developed by: <a href="#">Minux-Team</a></p>
             <!-- <hr id="h-foot"> -->
+            <div class="copyright">
+                <p>&#169;</p><p>copyright</p>
+            </div>
         </footer>
 
         <script src="{{url_for('static', filename='scripts/main.js')}}"></script>

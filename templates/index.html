@@ -6,7 +6,9 @@
     <div class="card">
         <h2>Movies</h2>
         <hr id="h-card">
-        <p>Dive in to get the latest movies in the industry.</p>
+        <div class="text">
+            <p>Dive in to get the latest movies in the industry.</p>
+        </div>
         <figure class="card-image">
             <a href="/movies">
                 <img src="{{url_for('static', filename='images/movie.jpeg')}}" alt="Movie image">
@@ -17,7 +19,10 @@
     <div class="card">
         <h2>TV Show</h2>
         <hr id="h-card">
-        <p>Download the most recent releases of your favourite TV Shows episodes.</p>
+        <div class="text">
+            <p>Download the most recent releases of your favourite TV Shows episodes.</p>
+        </div>
+        
         <figure class="card-image">
             <a href="/tv_show">
                 <img src="{{url_for('static', filename='images/serie.jpg')}}" alt="TV Show image">
@@ -28,7 +33,9 @@
     <div class="card">
         <h2>Games</h2>
         <hr id="h-card">
-        <p>Here is where the gamers show their smiles.</p>
+        <div class="text">
+            <p>Here is where the gamers show their smiles.</p>
+        </div>
         <figure class="card-image">
             <a href="/games">
                 <img src="{{url_for('static', filename='images/gaming.jpg')}}" alt="Game Image">
