@@ -4,7 +4,7 @@
 
 <div class="h1">
 	<h1>{% if query %}
-		Records for - {{ query|upper() }}
+		Records for:  {{ query|upper() }}  "{{ data|length}} Records found"
 		{% else %}
 		{{ page }}
 		{% endif %}</h1>
@@ -13,7 +13,7 @@
 	<table>
 		<thead>
 			<tr>
-				<th>Idx</th>
+				<th>#</th>
 				<th>Title</th>
 				<th>Size</th>
 				<th>Seeds</th>
