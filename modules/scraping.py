@@ -60,6 +60,7 @@ class KickAss():
 
         for se in self.seeds:
             seeds.append(se.text)
+            print(se.text)
         
         for cat in self.category:
             category.append(cat.text)
@@ -75,7 +76,7 @@ def data_collector(url):
     seeds = list()
     category = list()
         
-    for i in range(3):            
+    for i in range(1):            
         url = f"{url}/{i +1 }/"
 
         k = KickAss(url)
@@ -94,13 +95,16 @@ def json_maker(title, magnet, size, seeds, category):
     jsonfile = []
 
     for i in range(len(title)):
-        jsonfile.append({
-                "title": title[i],
-                "size": size[i],
-                "seeds": int(seeds[i]),
-                "magnet": magnet[i],
-                "category": category[i]
-        })
+        try:
+            jsonfile.append({
+                    "title": title[i],
+                    "size": size[i],
+                    "seeds": int(seeds[i]),
+                    "magnet": magnet[i],
+                    "category": category[i]
+            })
+        except:
+            print(title[i])
 
     return jsonfile
 

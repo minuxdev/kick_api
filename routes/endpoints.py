@@ -33,7 +33,7 @@ def search(keyword):
 	
 	if not data:
 		
-		url = f"https://kat.sx/usearch/{keyword}"
+		url = f"https://kkickass.com/usearch/{keyword}"
 		records = returning_json(url)
 
 		check = action.commit(keyword, records)
@@ -54,7 +54,7 @@ def tv_show():
 		return redirect(url_for('search', keyword = keyword, 
 				_title = keyword))
 
-	url = f"https://kat.sx/tv"
+	url = f"https://kkickass.com/tv"
 	jsonfile = returning_json(url)
 
 	return render_template("db.html", data = jsonfile, 
@@ -69,7 +69,7 @@ def movies():
 		return redirect(url_for('search', keyword = keyword,
 			_title = keyword))
 
-	url = f"https://kat.sx/movies"
+	url = f"https://kkickass.com/movies"
 	jsonfile = returning_json(url)
 
 	return render_template("db.html", data = jsonfile, 
@@ -83,7 +83,7 @@ def games():
 	if post:
 		return redirect(url_for('search', keyword = keyword))
 
-	url = f"https://kat.sx/games"
+	url = f"https://kkickass.com/games/"
 	jsonfile = returning_json(url)
 
 	return render_template("db.html", data = jsonfile, 
